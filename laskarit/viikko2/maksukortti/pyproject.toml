@@ -1,0 +1,22 @@
+[project]
+name = "maksukortti"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Victoria Khoreva",email = "victheliar@gmail.com"}
+]
+readme = "README.md"
+requires-python = "^3.10"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.0,<10.0.0)",
+    "coverage (>=7.11.3,<8.0.0)"
+]
