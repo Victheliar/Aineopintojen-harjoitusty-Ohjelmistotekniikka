@@ -7,3 +7,5 @@ Olen tekemässä __kalenterisovellusta__, jonne käyttäjä pystyisi lisäämä�
 [Harjoitustyön vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](/dokumentaatio/tuntikirjanpito.md)
+
+[Changelog](/dokumentaatio/changelog.md)
