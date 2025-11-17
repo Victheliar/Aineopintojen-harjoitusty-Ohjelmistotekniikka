@@ -29,4 +29,17 @@ class UserRepository:
         self._connection.commit()
         return user
     
+    def delete_all(self):
+        # Tyhjennä taulu Users
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE FROM Users")
+        self._connection.commit()
+        
+    def find_all(self):
+        # Etsi kaikki käyttäjät tietokannasta
+        cursor = self._connection.cursor()
+        cursor.execute("SELECT * FROM Users")
+        rows = cursor.fetchall()
+        return list(map(get_user_by_row, rows))
+    
 user_repository = UserRepository(get_database_connection())

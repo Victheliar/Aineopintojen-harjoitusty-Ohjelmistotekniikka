@@ -1,5 +1,4 @@
 data/database.sqlite
 __pycache__
-src/repositories/__pycache__
-src/ui/__pycache__
-database.sqlite
+htmlcov
+.coverage
