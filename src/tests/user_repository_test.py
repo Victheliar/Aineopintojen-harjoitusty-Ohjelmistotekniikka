@@ -13,3 +13,9 @@ class TestUserRepository(unittest.TestCase):
         users = user_repository.find_all()
         self.assertEqual(len(users), 1)
         self.assertEqual(users[0].username, self.user_vici.username)
+    
+    def test_find_all(self):
+        user_repository.create(self.user_vici)
+        user_repository.create(self.user_testi)
+        users = user_repository.find_all()
+        self.assertEqual(len(users), 2)
