@@ -3,9 +3,9 @@ from services.calendar_service import calendar_service, UsernameExistsError
 
 class CreateAccountView:
     # Rekisteröityminen
-    def __init__(self, root):
+    def __init__(self, root, handle_show_login_view):
         self._root = root
-        # self._handle_create_account = handle_create_account
+        self._handle_show_login_view = handle_show_login_view
         self._frame = None
         self._username_entry = None
         self._password_entry = None
@@ -31,7 +31,6 @@ class CreateAccountView:
             return
         try:
             calendar_service.create_user(username, password)
-            # self._handle_create_account()
         except UsernameExistsError:
             self._show_error(f"Username {username} is taken :(")
     
@@ -73,6 +72,13 @@ class CreateAccountView:
             command=self._create_user_handler
         )
         
+        login_button = ttk.Button(
+            master=self._frame,
+            text="Login",
+            command=self._handle_show_login_view
+        )
+        
         self._frame.grid_columnconfigure(0, weight=1, minsize=400)
         create_account_button.grid(padx=5, pady=5, sticky=constants.EW)
+        login_button.grid(padx=5, pady=5, sticky=constants.EW)
         self._hide_error()

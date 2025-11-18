@@ -6,6 +6,9 @@ from repositories.user_repository import (
 class UsernameExistsError(Exception):
     pass
 
+class InvalidCredentialsError(Exception):
+    pass
+
 class CalendarService:
     # Sovelluslogiikkaa <3
     def __init__(
@@ -23,6 +26,15 @@ class CalendarService:
             raise UsernameExistsError(f"Username {username} is taken :(")
         
         user = self._user_repo.create(User(username, password))
+        if login:
+            self._user = user
+        return user
+    
+    def login(self, username, password):
+        user = self._user_repo.find_by_username(username)
+        if not user or user.password != password:
+            raise InvalidCredentialsError("Invalid username or password!")
+        self._user = user
         return user
 
 calendar_service = CalendarService()
