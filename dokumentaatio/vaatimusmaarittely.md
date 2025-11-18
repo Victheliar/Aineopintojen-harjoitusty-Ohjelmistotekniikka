@@ -8,10 +8,10 @@ Sovelluksen avulla käyttäjien on mahdollsta pysyä ajantasalla tulevista tapah
 
 ### Ennen kirjautumista
 
-- Käyttäjä voi luoda itselleen käyttäjätunnuksen järjestelmään
-    - Käyttäjätunnuksen on oltava uniikki ja pituudeltaan vähintään 3 merkkiä
-- Käyttäjä voi kirjautua järjestelmään syöttämällä käyttäjätunnus ja salasana kirjautumislomakkeelle
-    - Jos käyttäjää ei ole olemassa, tai salasana ei täsmää, järjestelmä ilmoittaa tästä käyttäjälle.
+- Käyttäjä voi luoda itselleen käyttäjätunnuksen järjestelmään ✅
+    - Käyttäjätunnuksen on oltava uniikki ja pituudeltaan vähintään 3 merkkiä ✅
+- Käyttäjä voi kirjautua järjestelmään syöttämällä käyttäjätunnus ja salasana kirjautumislomakkeelle ✅
+    - Jos käyttäjää ei ole olemassa, tai salasana ei täsmää, järjestelmä ilmoittaa tästä käyttäjälle. ✅
 
 ### Kirjautumisen jälkeen
 
