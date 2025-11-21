@@ -1,14 +1,16 @@
 from entitites.user import User
 from database_connection import get_database_connection
 
+
 def get_user_by_row(row):
     return User(row["username"], row["password"]) if row else None
+
 
 class UserRepository:
     # Käyttäjiin liittyvät tietokantaoperaatiot <3
     def __init__(self, connection):
         self._connection = connection
-    
+
     def find_by_username(self, username):
         # Palauttaa käyttäjän käyttäjätunnuksen perusteella
         cursor = self._connection.cursor()
@@ -18,7 +20,7 @@ class UserRepository:
         )
         row = cursor.fetchone()
         return get_user_by_row(row)
-    
+
     def create(self, user):
         # tallenna uusi käyttäjä tietokantaan
         cursor = self._connection.cursor()
@@ -28,18 +30,19 @@ class UserRepository:
         )
         self._connection.commit()
         return user
-    
+
     def delete_all(self):
         # Tyhjennä taulu Users
         cursor = self._connection.cursor()
         cursor.execute("DELETE FROM Users")
         self._connection.commit()
-        
+
     def find_all(self):
         # Etsi kaikki käyttäjät tietokannasta
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM Users")
         rows = cursor.fetchall()
         return list(map(get_user_by_row, rows))
-    
+
+
 user_repository = UserRepository(get_database_connection())

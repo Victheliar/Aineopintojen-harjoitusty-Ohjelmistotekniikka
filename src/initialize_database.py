@@ -1,5 +1,6 @@
 from database_connection import get_database_connection
 
+
 def drop_tables(connection):
     # Posta taulut
     cursor = connection.cursor()
@@ -7,6 +8,7 @@ def drop_tables(connection):
                    DROP TABLE IF EXISTS Users;
                    """)
     connection.commit()
+
 
 def create_tables(connection):
     # Luo taulut tietokantaan <3
@@ -18,12 +20,14 @@ def create_tables(connection):
                        );
                    """)
     connection.commit()
-    
+
+
 def initialize_database():
     # Alusta tietokanta
     connection = get_database_connection()
     drop_tables(connection)
     create_tables(connection)
-    
+
+
 if __name__ == "__main__":
     initialize_database()
