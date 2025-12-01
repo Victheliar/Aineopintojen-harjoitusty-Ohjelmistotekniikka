@@ -4,7 +4,7 @@ from ui.ui import UI
 
 def main():
     window = Tk()
-    window.title("Welcome to your calendar✨")
+    window.title("Calendar application")
     ui_view = UI(window)
     ui_view.start()
     window.mainloop()

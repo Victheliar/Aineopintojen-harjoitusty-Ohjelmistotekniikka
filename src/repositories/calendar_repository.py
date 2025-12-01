@@ -21,7 +21,7 @@ class CalendarRepository:
                 
                 calendar_id = parts[0]
                 username = parts[1]
-                
+        
                 user = user_repository.find_by_username(username) if username else None
                 calendars.append(Calendar(user, calendar_id))
         
@@ -39,11 +39,7 @@ class CalendarRepository:
         return self._read()
     
     def find_by_username(self, username):
-        calendars = self.find_all()
-        for calendar in calendars:
-            if calendar.user and getattr(calendar.user, "username", None) == username:
-                user_calendar = calendar
-        return user_calendar
+        return next((calendar for calendar in self.find_all() if calendar.user and getattr(calendar.user, "username", None)==username), None)
     
     def create(self, calendar):
         calendars = self.find_all()
