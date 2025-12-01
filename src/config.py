@@ -10,3 +10,6 @@ except FileNotFoundError:
 
 DATABASE_FILENAME = os.getenv("DATABASE_FILENAME") or "database.sqlite"
 DATABASE_FILE_PATH = os.path.join(dirname, "..", "data", DATABASE_FILENAME)
+
+CALENDAR_FILENAME = os.getenv("CALENDAR_FILENAME") or "calendar.csv"
+CALENDAR_FILE_PATH = os.path.join(dirname, "..", "data", CALENDAR_FILENAME)

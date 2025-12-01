@@ -1,6 +1,10 @@
 from entitites.user import User
+from entitites.calendar import Calendar
 from repositories.user_repository import (
     user_repository as default_user_repository
+)
+from repositories.calendar_repository import (
+    calendar_repository as default_calendar_repository
 )
 
 
@@ -16,11 +20,13 @@ class CalendarService:
     # Sovelluslogiikkaa <3
     def __init__(
         self,
-        user_repo=default_user_repository
+        user_repo=default_user_repository,
+        calendar_repo=default_calendar_repository
     ):
 
         self._user = None
         self._user_repo = user_repo
+        self._calendar_repo = calendar_repo
 
     def create_user(self, username, password, login=True):
         existing_user = self._user_repo.find_by_username(username)
@@ -42,6 +48,15 @@ class CalendarService:
     
     def get_current_user(self):
         return self._user
-
+    
+    def create_calendar(self):
+        calendar = Calendar(user=self._user)
+        return self._calendar_repo.create(calendar)
+    
+    def get_calendar(self):
+        if not self._user:
+            return []
+        calendar = self._calendar_repo.find_by_username(self._user.username)
+        return calendar
 
 calendar_service = CalendarService()
