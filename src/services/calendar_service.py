@@ -39,6 +39,9 @@ class CalendarService:
             raise InvalidCredentialsError("Invalid username or password!")
         self._user = user
         return user
+    
+    def get_current_user(self):
+        return self._user
 
 
 calendar_service = CalendarService()
