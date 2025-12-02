@@ -2,6 +2,8 @@
 
 Sovelluksen avulla on mahdollista seurata omaa henkilökohtaista kalenteria sekä lisätä sinne tulevia tapahtumia.
 
+[Ensimmäinen release](https://github.com/Victheliar/Aineopintojen-harjoitusty-Ohjelmistotekniikka/releases/tag/viikko5)
+
 [Harjoitustyön vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](/dokumentaatio/tuntikirjanpito.md)
