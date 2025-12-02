@@ -15,7 +15,7 @@ Sovelluksen avulla käyttäjien on mahdollsta pysyä ajantasalla tulevista tapah
 
 ### Kirjautumisen jälkeen
 
-- Käyttäjä näkee oman kalenterinsa
+- Käyttäjä näkee oman kalenterinsa ✅
 - Käyttäjä voi lisätä kalenteriinsa uuden tapahtuman tai tehtävän
     - Luotu tapahtuma tai tehtävä näkyy ainoastaan sen luoneelle käyttäjälle
 - Käyttäjä voi merkitä tehtävän tehdyksi, jolloin se poistuu näkymästä.
