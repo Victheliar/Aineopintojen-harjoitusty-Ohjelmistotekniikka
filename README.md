@@ -15,7 +15,11 @@ Sovelluksen avulla on mahdollista seurata omaa henkilökohtaista kalenteria sek�
 ```bash
 poetry install
 ```
-2. Käynnistä sovellus:
+2. Suorita vaadittavat alustustoimentpiteet:
+```bash
+poetry run invoke build
+```   
+3. Käynnistä sovellus:
 ```bash
 poetry run invoke start
 ```
