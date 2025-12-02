@@ -8,3 +8,8 @@
 
 - Käyttäjä pystyy kirjautumaan sovellukseen luodun käyttäjätunnuksen avulla
 - Lisätty luokkakaavio ja pylint
+
+## Viikko 5
+- Käyttäjä näkee kalenterinsa kirjautumisen jälkeen, kalenterin tiedot tallennetaan .csv-tiedostoon
+- Lisätty CalendarRepository-luokka, joka vastaa kalentereihin liittyvistä tietokantaoperaatioista
+- Lisätty käyttäjätunnuksen luomista kuvaava sekvenssikaavio
