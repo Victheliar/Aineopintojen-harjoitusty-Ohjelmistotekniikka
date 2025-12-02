@@ -8,4 +8,4 @@ Sovelluksen avulla on mahdollista seurata omaa henkil√∂kohtaista kalenteria sek√
 
 [Changelog](/dokumentaatio/changelog.md)
 
-[Luokkakaavio](/dokumentaatio/arkkitehtuuri.md)
+[Arkkitehtuuri](/dokumentaatio/arkkitehtuuri.md)
