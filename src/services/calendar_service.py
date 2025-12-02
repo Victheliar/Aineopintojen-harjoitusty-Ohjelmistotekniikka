@@ -37,6 +37,7 @@ class CalendarService:
         user = self._user_repo.create(User(username, password))
         if login:
             self._user = user
+            self.create_calendar()
         return user
 
     def login(self, username, password):
@@ -44,12 +45,16 @@ class CalendarService:
         if not user or user.password != password:
             raise InvalidCredentialsError("Invalid username or password!")
         self._user = user
+        self.get_calendar()
         return user
     
     def get_current_user(self):
         return self._user
     
     def create_calendar(self):
+        existing_calendar = self._calendar_repo.find_by_username(self._user.username)
+        if existing_calendar:
+            return existing_calendar
         calendar = Calendar(user=self._user)
         return self._calendar_repo.create(calendar)
     

@@ -1,4 +1,5 @@
-from tkinter import ttk, constants
+from tkinter import ttk, constants, Text, END
+from tkinter import *
 from services.calendar_service import calendar_service
 
 class CalendarItemView:
@@ -14,14 +15,19 @@ class CalendarItemView:
     def destroy(self):
         self._frame.destroy()
     
-    def _initialize_calendar_item(self, calendar):
+    def _initialize_calendar_item(self):
         item_frame = ttk.Frame(master=self._frame)
         item_frame.grid_columnconfigure(0, weight=1)
-        item_frame.pack(fill=constants.X)
+        item_frame.pack(fill=constants.BOTH, expand=True)
+        text_widget = Text(master=item_frame, wrap="none", height=20)
+        text_widget.pack(fill=constants.BOTH, expand=True, padx=5, pady=5)
+        content = self._calendar.calendar
+        text_widget.insert(END, content)
+        text_widget.config(state="disabled")
     
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._initialize_calendar_item(self._calendar)
+        self._initialize_calendar_item()
 
 class CalendarView:
     def __init__(self, root, handle_login):
@@ -42,7 +48,7 @@ class CalendarView:
     def _initialize_header(self):
         user_label = ttk.Label(
             master=self._frame,
-            text=f"Welcome {self._user.username}! ✨"
+            text=f"Welcome {self._user.username}! <3"
         )
         user_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
         

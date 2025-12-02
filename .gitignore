@@ -1,4 +1,5 @@
 data/database.sqlite
+data/calendar.csv
 __pycache__
 htmlcov
 .coverage

@@ -33,6 +33,8 @@ class LoginView:
         password = self._password_entry.get()
         try:
             calendar_service.login(username, password)
+            if not calendar_service.get_calendar():
+                calendar_service.create_calendar()
             self._handle_login()
         except InvalidCredentialsError:
             self._show_error("Invalid username or password!")
