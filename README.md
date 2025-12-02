@@ -9,3 +9,38 @@ Sovelluksen avulla on mahdollista seurata omaa henkilökohtaista kalenteria sek�
 [Changelog](/dokumentaatio/changelog.md)
 
 [Arkkitehtuuri](/dokumentaatio/arkkitehtuuri.md)
+
+## Asennus
+1. Asenna riippuvuudet:
+```bash
+poetry install
+```
+2. Käynnistä sovellus:
+```bash
+poetry run invoke start
+```
+## Komentorivikomennot
+
+### Testaus
+
+Testit voi suorittaa komennolla:
+```bash
+poetry run invoke test
+```
+
+### Testikattavuus
+
+Testikattavuusraportin voi generoida komennolla:
+
+```bash
+poetry run invoke coverage-report
+```
+Raportti generoituu _htmlcov_-hakemistoon
+
+### Pylint
+
+Tiedoston [.pylintrc](/.pylintrc) määrittelemät tarkistukset voi suorittaa komennolla:
+
+```bash
+poetry run invoke lint
+```
