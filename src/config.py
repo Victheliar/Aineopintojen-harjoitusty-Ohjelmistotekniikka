@@ -13,3 +13,6 @@ DATABASE_FILE_PATH = os.path.join(dirname, "..", "data", DATABASE_FILENAME)
 
 CALENDAR_FILENAME = os.getenv("CALENDAR_FILENAME") or "calendar.csv"
 CALENDAR_FILE_PATH = os.path.join(dirname, "..", "data", CALENDAR_FILENAME)
+
+EVENT_FILENAME = os.getenv("EVENT_FILENAME") or "event.csv"
+EVENT_FILE_PATH = os.path.join(dirname, "..", "data", EVENT_FILENAME)
