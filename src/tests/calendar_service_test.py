@@ -1,5 +1,5 @@
 import unittest
-from entitites.user import User
+from entities.user import User
 from services.calendar_service import InvalidCredentialsError, UsernameExistsError
 
 

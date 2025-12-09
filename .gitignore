@@ -1,5 +1,6 @@
 data/database.sqlite
 data/calendar.csv
+data/event.csv
 __pycache__
 htmlcov
 .coverage

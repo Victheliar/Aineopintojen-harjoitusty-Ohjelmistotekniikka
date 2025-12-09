@@ -31,4 +31,11 @@ class EventService:
         event = Event(content=content, date=date, user=self._user, calendar_id=calendar_id)
         return self._event_repo.create(event)
     
+    def get_events(self):
+        if not self._user:
+            return []
+        
+        events = self._event_repo.find_by_username(self._user.username)
+        return list(events)
+    
 event_service = EventService()
