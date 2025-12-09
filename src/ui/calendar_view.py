@@ -123,6 +123,7 @@ class CalendarView:
                 # print("Saving event for", date, "content:", content)
                 event_service.create_event(content=content, date=date)
                 frame_top.destroy()
+                event_service._event_repo.find_all()
                 self._initialize_calendar()
         ttk.Button(frame_top, text="Create", command=create_event).pack()
         ttk.Button(frame_top, text="Cancel", command=frame_top.destroy).pack()

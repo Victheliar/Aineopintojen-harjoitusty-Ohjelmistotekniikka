@@ -27,7 +27,7 @@ class EventRepository:
             
                 user = user_repository.find_by_username(username) if username else None
             
-                events.append(Event(content, user, event_id, calendar_id))
+                events.append(Event(content, date, user, event_id, calendar_id))
             return events
 
     def _ensure_file_exists(self):
@@ -49,7 +49,7 @@ class EventRepository:
         
         with open(self._file_path, "w", encoding="utf-8") as file:
             for event in events:
-                username = event.user if event.user else ""
+                username = getattr(event.user, "username", "") if event.user else ""
                 calendar_id = event.calendar_id
                 row = f"{event.id};{event.content};{event.date};{username};{calendar_id}"
                 file.write(row+"\n")
