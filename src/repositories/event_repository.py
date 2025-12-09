@@ -4,10 +4,23 @@ from repositories.user_repository import user_repository
 from config import EVENT_FILE_PATH
 
 class EventRepository:
+    """Tapahtumiin liittyvistä tietokantaoperaatioista vastaava luokka"""
     def __init__(self, file_path):
+        """
+        Luokan konstruktori.
+        
+        Args:
+            file_path: Polku CSV-tiedostoon, johon tapahtumat tallennetaan.
+        """
         self._file_path = file_path
     
     def find_all(self):
+        """
+        Palauttaa kaikki tapahtumat
+        
+        Returns:
+            Palauttaa listan Event-olioita.
+        """
         return self._read()
     
     def _read(self):
@@ -34,11 +47,29 @@ class EventRepository:
         Path(self._file_path).touch()
         
     def find_by_username(self, username):
+        """
+        Palauttaa käyttäjän tapahtumat.
+        
+        Args:
+            username: Käyttäjän käyttäjätunnus, jonka tapahtumat palautetaan
+        
+        Returns:
+            Palauttaa listan Event-olioita.
+        """
         events = self.find_all()
         user_events = filter(lambda event: event.user and event.user.username == username, events)
         return list(user_events)
     
     def create(self, event):
+        """
+        Tallentaa tapahtuman tietokantaan.
+        
+        Args:
+            event: Tallennettava tapahtuma Event-oliona
+        
+        Returns:    
+            Tallennettu tapahtuma Event-oliona.
+        """
         events = self.find_all()
         events.append(event)
         self._write(events)
@@ -55,6 +86,9 @@ class EventRepository:
                 file.write(row+"\n")
     
     def delete_all(self):
+        """
+        Poistaa kaikki tapahtumat
+        """
         self._write([])
 
 event_repository = EventRepository(EVENT_FILE_PATH)
