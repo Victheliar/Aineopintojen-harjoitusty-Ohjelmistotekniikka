@@ -53,5 +53,8 @@ class EventRepository:
                 calendar_id = event.calendar_id
                 row = f"{event.id};{event.content};{event.date};{username};{calendar_id}"
                 file.write(row+"\n")
+    
+    def delete_all(self):
+        self._write([])
 
 event_repository = EventRepository(EVENT_FILE_PATH)
