@@ -1,5 +1,5 @@
 from pathlib import Path
-from entitites.event import Event
+from entities.event import Event
 from repositories.user_repository import user_repository
 from config import EVENT_FILE_PATH
 

@@ -76,3 +76,29 @@ class CalendarView:
         )
         self._frame.grid_columnconfigure(0, weight=1, minsize=400)
         self._frame.grid_columnconfigure(1, weight=0)
+    
+class EventView:
+    def __init__(self, root):
+        self._root = root
+        self._user = calendar_service.get_current_user()
+        self._frame = None
+        self._create_event_entry = None
+        self._calendar_frame = None
+        self._calendar_view = None
+        
+        self._initialize()
+        
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+        self._calendar_frame = ttk.Frame(master=self._frame)
+        
+        self._initialize_calendar()
+    
+    def _initialize_calendar(self):
+        if self._calendar_view:
+            self._calendar_view.destroy()
+    
+    def destroy(self):
+        self._frame.destroy()
+        
+        

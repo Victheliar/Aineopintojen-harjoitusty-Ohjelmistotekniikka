@@ -1,5 +1,5 @@
-from entitites.user import User
-from entitites.calendar import Calendar
+from entities.user import User
+from entities.calendar import Calendar
 from repositories.user_repository import (
     user_repository as default_user_repository
 )

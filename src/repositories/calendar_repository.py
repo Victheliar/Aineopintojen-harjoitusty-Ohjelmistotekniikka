@@ -1,5 +1,5 @@
 from pathlib import Path
-from entitites.calendar import Calendar
+from entities.calendar import Calendar
 from repositories.user_repository import user_repository
 from config import CALENDAR_FILE_PATH
 
