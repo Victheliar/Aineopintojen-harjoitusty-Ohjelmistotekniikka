@@ -1,5 +1,4 @@
 from entities.event import Event
-from entities.user import User
 
 from repositories.event_repository import(
     event_repository as default_event_repo
