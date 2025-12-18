@@ -103,6 +103,3 @@ SequenceDiagram
     UI->UI: show_calendar_view()
 ```
 Eli ```CalendarService```:n metodia login kutsutaan antaen sille parametriksi käyttäjätunnuksen ja salasanan. Tämän jälkeen sovelluslogiikka selvittää ```UserRepository```:n avulla, onko käyttäjätunnus olemassa ja täsmäävätkö salasanat. Jos molemmat asiat pitävät paikkaansa, sisäänkirjautuminen onnistuu, minkä seurauksena käyttöliittymän näkymäksi tulee ```CalendarView```, eli sovelluksen päänäkymä. Näkymälle renderöidään myös kirjautuneen käyttäjän kalenteriin lisätyt tapahtumat.
-
-<!-- ![architecture](architecture.jpg) -->
-<!-- ![sequence](sekvenssikaavio.jpg) -->
