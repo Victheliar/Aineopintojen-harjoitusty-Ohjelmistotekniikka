@@ -13,3 +13,10 @@
 - Käyttäjä näkee kalenterinsa kirjautumisen jälkeen, kalenterin tiedot tallennetaan .csv-tiedostoon
 - Lisätty CalendarRepository-luokka, joka vastaa kalentereihin liittyvistä tietokantaoperaatioista
 - Lisätty käyttäjätunnuksen luomista kuvaava sekvenssikaavio
+
+## Viikko 6
+- Käyttäjä pystyy lisäämään kalenteriinsa tapahtumia, jotka näkyvät tallennuksen jälkeen "*"-merkkeinä kalenterissa.
+- Lisätty EventRepository-luokka, joka vastaa kalenterin tapahtumiin liittyvistä tietokantaoperaatioista
+
+## Viikko 7
+- Lisätty arkkitehtuurikuvaus ja käyttöohje

@@ -9,4 +9,8 @@
 |24.11. | 0,5  | korjattu kattavuusraportin generointi|
 |01.12. | 6    | kalenterinäkymän aloittaminen|
 |02.12. | 6    | kalenterinäkymän viimeistely |
-| yht.  | 18,5  |    |
+|08.12. | 6    | tapahtumien lisääminen |
+| 09.12.| 6    | tapahtumien lisäämisen viimeistely ja ohjelman testaaminen |
+| 16.12.| 3     | Arkkitehtuurikuvauksen kirjoittaminen |
+| 18.12.| 3    | Arkkitehtuurikuvauksen ja käyttöohjeen kirjoittaminen |
+| yht.  | 36,5  |    |
