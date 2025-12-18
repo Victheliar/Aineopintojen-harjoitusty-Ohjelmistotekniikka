@@ -4,7 +4,7 @@ from services.calendar_service import calendar_service, InvalidCredentialsError
 
 class LoginView:
     # Kirjautuminen
-    def __init__(self, root, handle_login ,handle_show_create_account_view):
+    def __init__(self, root, handle_login, handle_show_create_account_view):
         self._root = root
         self._handle_login = handle_login
         self._handle_show_create_account_view = handle_show_create_account_view

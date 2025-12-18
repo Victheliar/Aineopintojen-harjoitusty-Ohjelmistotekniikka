@@ -52,7 +52,8 @@ class CalendarService:
         return self._user
 
     def create_calendar(self):
-        existing_calendar = self._calendar_repo.find_by_username(self._user.username)
+        existing_calendar = self._calendar_repo.find_by_username(
+            self._user.username)
         if existing_calendar:
             return existing_calendar
         calendar = Calendar(user=self._user)
@@ -63,5 +64,6 @@ class CalendarService:
             return []
         calendar = self._calendar_repo.find_by_username(self._user.username)
         return calendar
+
 
 calendar_service = CalendarService()

@@ -21,12 +21,13 @@ class UI:
     def _show_create_user_view(self):
         self._hide_current_view()
         self._current_view = CreateAccountView(
-            self._root, self._show_calendar_view,self._show_login_view)
+            self._root, self._show_calendar_view, self._show_login_view)
         self._current_view.pack()
 
     def _show_login_view(self):
         self._hide_current_view()
-        self._current_view = LoginView(self._root, self._show_calendar_view ,self._show_create_user_view)
+        self._current_view = LoginView(
+            self._root, self._show_calendar_view, self._show_create_user_view)
         self._current_view.pack()
 
     def _show_calendar_view(self):

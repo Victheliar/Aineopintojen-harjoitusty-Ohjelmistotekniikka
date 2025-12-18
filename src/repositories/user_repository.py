@@ -10,10 +10,11 @@ class UserRepository:
     """
     Käyttäjiin liittyvät tietokantaoperaatiot
     """
+
     def __init__(self, connection):
         """
         Luokan konstruktori
-        
+
         Args:
             connection: Tietokantayhteyden Connection-olio
         """
@@ -22,10 +23,10 @@ class UserRepository:
     def find_by_username(self, username):
         """
         Palauttaa käyttäjän käyttäjätunnuksen perusteella
-        
+
         Args:
             username: Käyttäjätunnus, jonka käyttäjä palautetaan.
-            
+
         Returns:
             Palauttaa User-olion, jos käyttäjätunnuksen omaava käyttäjä on tietokannassa.
             Muutoin None.
@@ -40,10 +41,10 @@ class UserRepository:
 
     def create(self, user):
         """tallenna uusi käyttäjä tietokantaan
-        
+
         Args:
             user: Tallennettava käyttäjä User-oliona.
-        
+
         Returns:
             Tallennettu käyttäjä User-oliona.
         """
@@ -63,7 +64,7 @@ class UserRepository:
 
     def find_all(self):
         """Etsii ja palauttaa kaikki käyttäjät tietokannasta
-        
+
         Returns:
             Palauttaa listan User-olioita.
         """

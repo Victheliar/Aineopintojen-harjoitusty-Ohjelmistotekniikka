@@ -22,7 +22,7 @@ class TestUserRepository(unittest.TestCase):
         self.assertEqual(len(users), 2)
         self.assertEqual(users[0].username, self.user_vici.username)
         self.assertEqual(users[1].username, self.user_testi.username)
-    
+
     def test_find_by_username(self):
         user_repository.create(self.user_vici)
         user = user_repository.find_by_username(self.user_vici.username)
