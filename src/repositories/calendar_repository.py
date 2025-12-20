@@ -1,10 +1,11 @@
 from pathlib import Path
 from entities.calendar import Calendar
 from repositories.user_repository import user_repository
+from repositories.csv_base_repository import CSVBaseRepository
 from config import CALENDAR_FILE_PATH
 
 
-class CalendarRepository:
+class CalendarRepository(CSVBaseRepository):
 
     def __init__(self, file_path):
         self._file_path = file_path
@@ -15,17 +16,14 @@ class CalendarRepository:
     def _read(self):
         calendars = []
         self._ensure_file_exists()
-        with open(self._file_path, encoding="utf-8") as file:
-            for row in file:
-                row = row.replace("\n", "")
-                parts = row.split(";")
+        parts = self._read_csv_file()
 
-                calendar_id = parts[0]
-                username = parts[1]
+        calendar_id = parts[0]
+        username = parts[1]
 
-                user = user_repository.find_by_username(
-                    username) if username else None
-                calendars.append(Calendar(user, calendar_id))
+        user = user_repository.find_by_username(
+            username) if username else None
+        calendars.append(Calendar(user, calendar_id))
 
         return calendars
 

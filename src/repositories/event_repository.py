@@ -2,10 +2,11 @@ from pathlib import Path
 from entities.event import Event
 from repositories.calendar_repository import calendar_repository
 from repositories.user_repository import user_repository
+from repositories.csv_base_repository import CSVBaseRepository
 from config import EVENT_FILE_PATH
 
 
-class EventRepository:
+class EventRepository(CSVBaseRepository):
     """Tapahtumiin liittyvistä tietokantaoperaatioista vastaava luokka"""
 
     def __init__(self, file_path):
@@ -33,30 +34,27 @@ class EventRepository:
     def _read(self):
         events = []
         self._ensure_file_exists()
+        
+        parts = self._read_csv_file()
 
-        with open(self._file_path, encoding="utf-8") as file:
-            for row in file:
-                row = row.replace("\n", "")
-                parts = row.split(";")
+        event_id = parts[0]
+        content = parts[1]
+        date = parts[2]
+        username = parts[3]
+        calendar_id = parts[4]
 
-                event_id = parts[0]
-                content = parts[1]
-                date = parts[2]
-                username = parts[3]
-                calendar_id = parts[4]
+        user = user_repository.find_by_username(
+            username) if username else None
 
-                user = user_repository.find_by_username(
-                    username) if username else None
+        events.append(
+            Event(
+                content=content,
+                date=date,
+                user=user,
+                event_id=event_id,
+                calendar_id=calendar_id))
 
-                events.append(
-                    Event(
-                        content=content,
-                        date=date,
-                        user=user,
-                        event_id=event_id,
-                        calendar_id=calendar_id))
-
-            return events
+        return events
 
     def _ensure_file_exists(self):
         Path(self._file_path).touch()
