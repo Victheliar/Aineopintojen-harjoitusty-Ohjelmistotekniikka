@@ -26,8 +26,8 @@ class EventRepository:
         """
         return self._read()
 
-    def find_events_by_date(self, date):
-        events = self.find_all()
+    def find_user_events_by_date(self, date, username):
+        events = self.find_by_username(username)
         return [event.content for event in events if getattr(event, "date", "")==date]
 
     def _read(self):
