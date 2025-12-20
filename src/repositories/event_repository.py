@@ -1,5 +1,6 @@
 from pathlib import Path
 from entities.event import Event
+from repositories.calendar_repository import calendar_repository
 from repositories.user_repository import user_repository
 from config import EVENT_FILE_PATH
 
@@ -24,7 +25,7 @@ class EventRepository:
             Palauttaa listan Event-olioita.
         """
         return self._read()
-    
+
     def find_events_by_date(self, date):
         events = self.find_all()
         return [event.content for event in events if getattr(event, "date", "")==date]
@@ -91,7 +92,8 @@ class EventRepository:
             for event in events:
                 username = getattr(event.user, "username",
                                    "") if event.user else ""
-                calendar_id = event.calendar_id
+                calendar = calendar_repository.find_by_username(username)
+                calendar_id = calendar.id
                 row = f"{event.id};{event.content};{event.date};{username};{calendar_id}"
                 file.write(row+"\n")
 
