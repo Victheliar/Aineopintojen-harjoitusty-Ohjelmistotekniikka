@@ -9,4 +9,4 @@ class CSVBaseRepository:
                 row = row.replace("\n", "")
                 parts = row.split(";")
                 rows.append(parts)
-        return parts
+        return rows
