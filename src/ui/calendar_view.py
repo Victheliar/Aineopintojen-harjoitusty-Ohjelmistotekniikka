@@ -19,7 +19,7 @@ class CalendarItemView:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
-        self._frame.destroy()     
+        self._frame.destroy()
 
     def _initialize_calendar_item(self):
         item_frame = ttk.Frame(master=self._frame)
@@ -57,7 +57,8 @@ class CalendarItemView:
 
     def _get_events_for_date(self, date):
         event_service._user = self._user
-        events = event_service._event_repo.find_by_username(self._user.username)
+        events = event_service._event_repo.find_by_username(
+            self._user.username)
         return [event.content for event in events if getattr(event, "date", "") == date]
 
     def _click_date(self, day, month, year):
@@ -73,7 +74,7 @@ class CalendarItemView:
 class CalendarView:
     def __init__(self, root, handle_logout):
         self._root = root
-        self._handle_logout= handle_logout
+        self._handle_logout = handle_logout
         self._user = calendar_service.get_current_user()
         self._frame = None
         self._calendar_frame = None
@@ -85,7 +86,7 @@ class CalendarView:
 
     def destroy(self):
         self._frame.destroy()
-    
+
     def _logout_handler(self):
         calendar_service.logout()
         self._handle_logout()
@@ -95,13 +96,13 @@ class CalendarView:
             master=self._frame,
             text=f"Welcome {self._user.username}! <3"
         )
-        
+
         logout_button = ttk.Button(
             master=self._frame,
             text="Logout",
             command=self._logout_handler
         )
-        
+
         user_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
 
         logout_button.grid(
@@ -136,7 +137,7 @@ class CalendarView:
                 events_text.insert(END, f"● {event}\n")
             events_text.config(state="disabled")
             events_text.pack()
-        
+
         ttk.Label(frame_top, text="Add new event! ☺").pack()
         ttk.Label(frame_top, text="Event name:").pack()
         entry_name = ttk.Entry(frame_top)

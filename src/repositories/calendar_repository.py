@@ -41,7 +41,10 @@ class CalendarRepository:
         return self._read()
 
     def find_by_username(self, username):
-        return next((calendar for calendar in self.find_all() if calendar.user and getattr(calendar.user, "username", None) == username), None)
+        return next(
+            (calendar for calendar in self.find_all()
+             if calendar.user and getattr(calendar.user, "username", None) == username),
+            None)
 
     def create(self, calendar):
         calendars = self.find_all()

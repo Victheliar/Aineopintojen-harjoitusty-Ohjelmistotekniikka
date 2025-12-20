@@ -13,7 +13,7 @@ class Event:
         calendar_id: Merkkijonoarvo, joka kuvaa kalenterin id:tä
     """
 
-    def __init__(self, content, date, user=None, event_id=None, calendar_id=None):
+    def __init__(self, *, content, date, user=None, event_id=None, calendar_id=None):
         self.content = content
         self.user = user
         self.id = event_id or str(uuid.uuid4())

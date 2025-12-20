@@ -28,7 +28,7 @@ class EventRepository:
 
     def find_user_events_by_date(self, date, username):
         events = self.find_by_username(username)
-        return [event.content for event in events if getattr(event, "date", "")==date]
+        return [event.content for event in events if getattr(event, "date", "") == date]
 
     def _read(self):
         events = []
@@ -49,7 +49,13 @@ class EventRepository:
                     username) if username else None
 
                 events.append(
-                    Event(content, date, user, event_id, calendar_id))
+                    Event(
+                        content=content,
+                        date=date,
+                        user=user,
+                        event_id=event_id,
+                        calendar_id=calendar_id))
+
             return events
 
     def _ensure_file_exists(self):

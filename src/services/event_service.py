@@ -43,4 +43,5 @@ class EventService:
         events = self._event_repo.find_user_events_by_date(date, username)
         return events
 
+
 event_service = EventService()
