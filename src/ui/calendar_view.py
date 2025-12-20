@@ -58,8 +58,6 @@ class CalendarItemView:
     def _get_events_for_date(self, date):
         event_service._user = self._user
         events = event_service._event_repo.find_all()
-        # matching = [event.content for event in events if getattr(event, "date", "") == date]
-        # print(f"Events for {date}: {matching}")
         return [event.content for event in events if getattr(event, "date", "") == date]
 
     def _click_date(self, day, month, year):
@@ -111,6 +109,16 @@ class CalendarView:
         frame_top.title("Add Event")
         ttk.Label(frame_top, text=f"Event on date: {date}").pack()
 
+        events = event_service.get_events_by_date(date)
+        if events:
+            ttk.Label(frame_top, text="Events for this date: ").pack()
+            events_text = Text(frame_top, height=5, width=40, state="normal")
+            for event in events:
+                events_text.insert(END, f"● {event}\n")
+            events_text.config(state="disabled")
+            events_text.pack()
+        
+        ttk.Label(frame_top, text="Add new event! ☺").pack()
         ttk.Label(frame_top, text="Event name:").pack()
         entry_name = ttk.Entry(frame_top)
         entry_name.pack()
@@ -125,7 +133,6 @@ class CalendarView:
             if event_name:
                 event_service._user = self._user
                 content = f"{event_name}:{event_description}" if event_description else event_name
-                # print("Saving event for", date, "content:", content)
                 event_service.create_event(content=content, date=date)
                 frame_top.destroy()
                 event_service._event_repo.find_all()

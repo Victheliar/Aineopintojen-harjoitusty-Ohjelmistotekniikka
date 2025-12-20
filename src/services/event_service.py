@@ -39,5 +39,8 @@ class EventService:
         events = self._event_repo.find_by_username(self._user.username)
         return list(events)
 
+    def get_events_by_date(self, date):
+        events = self._event_repo.find_events_by_date(date)
+        return events
 
 event_service = EventService()

@@ -24,6 +24,10 @@ class EventRepository:
             Palauttaa listan Event-olioita.
         """
         return self._read()
+    
+    def find_events_by_date(self, date):
+        events = self.find_all()
+        return [event.content for event in events if getattr(event, "date", "")==date]
 
     def _read(self):
         events = []
