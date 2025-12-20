@@ -13,5 +13,5 @@
 | 09.12.| 6    | tapahtumien lisäämisen viimeistely ja ohjelman testaaminen |
 | 16.12.| 3     | Arkkitehtuurikuvauksen kirjoittaminen |
 | 18.12.| 3    | Arkkitehtuurikuvauksen ja käyttöohjeen kirjoittaminen |
-|20.12. | 1    | Uloskirjautuminen + luotujen tapahtumien tarkastelu   |
-| yht.  | 37,5  |    |
+|20.12. | 3    | Uloskirjautuminen + luotujen tapahtumien tarkastelu, koodin refaktorointi ja laadunhallinta   |
+| yht.  | 39,5  |    |
