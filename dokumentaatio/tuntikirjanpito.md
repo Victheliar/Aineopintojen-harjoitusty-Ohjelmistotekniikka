@@ -14,4 +14,4 @@
 | 16.12.| 3     | Arkkitehtuurikuvauksen kirjoittaminen |
 | 18.12.| 3    | Arkkitehtuurikuvauksen ja käyttöohjeen kirjoittaminen |
 |20.12. | 1    | Uloskirjautuminen + luotujen tapahtumien tarkastelu   |
-| yht.  | 36,5  |    |
+| yht.  | 37,5  |    |
