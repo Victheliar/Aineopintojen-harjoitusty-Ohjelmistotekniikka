@@ -47,6 +47,10 @@ class CalendarService:
         self._user = user
         self.get_calendar()
         return user
+    
+    def logout(self):
+        """Kirjaa nykyisen käyttäjän ulos."""
+        self._user = None
 
     def get_current_user(self):
         return self._user

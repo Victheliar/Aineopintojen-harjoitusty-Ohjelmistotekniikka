@@ -19,7 +19,7 @@ class CalendarItemView:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
-        self._frame.destroy()
+        self._frame.destroy()     
 
     def _initialize_calendar_item(self):
         item_frame = ttk.Frame(master=self._frame)
@@ -71,9 +71,9 @@ class CalendarItemView:
 
 
 class CalendarView:
-    def __init__(self, root, handle_login):
+    def __init__(self, root, handle_logout):
         self._root = root
-        self._handle_login = handle_login
+        self._handle_logout= handle_logout
         self._user = calendar_service.get_current_user()
         self._frame = None
         self._calendar_frame = None
@@ -85,13 +85,32 @@ class CalendarView:
 
     def destroy(self):
         self._frame.destroy()
+    
+    def _logout_handler(self):
+        calendar_service.logout()
+        self._handle_logout()
 
     def _initialize_header(self):
         user_label = ttk.Label(
             master=self._frame,
             text=f"Welcome {self._user.username}! <3"
         )
+        
+        logout_button = ttk.Button(
+            master=self._frame,
+            text="Logout",
+            command=self._logout_handler
+        )
+        
         user_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
+
+        logout_button.grid(
+            row=0,
+            column=1,
+            padx=5,
+            pady=5,
+            sticky=constants.EW
+        )
 
     def _initialize_calendar(self):
         if self._calendar_view:
