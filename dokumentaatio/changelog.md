@@ -20,3 +20,5 @@
 
 ## Viikko 7
 - Lisätty arkkitehtuurikuvaus ja käyttöohje
+- Lisätty tarkempi "päivänäkymä", josta pystyy tarkastelemaan päivämääräkohtaisia tapahtumia
+- Lisätty mahdollisuus uloskirjautumiseen
