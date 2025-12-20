@@ -7,9 +7,6 @@ from config import CALENDAR_FILE_PATH
 
 class CalendarRepository(CSVBaseRepository):
 
-    def __init__(self, file_path):
-        self._file_path = file_path
-
     def _ensure_file_exists(self):
         Path(self._file_path).touch()
 
@@ -17,7 +14,7 @@ class CalendarRepository(CSVBaseRepository):
         calendars = []
         self._ensure_file_exists()
         rows = self._read_csv_file()
-        
+
         for parts in rows:
             calendar_id = parts[0]
             username = parts[1]

@@ -9,15 +9,6 @@ from config import EVENT_FILE_PATH
 class EventRepository(CSVBaseRepository):
     """Tapahtumiin liittyvistä tietokantaoperaatioista vastaava luokka"""
 
-    def __init__(self, file_path):
-        """
-        Luokan konstruktori.
-
-        Args:
-            file_path: Polku CSV-tiedostoon, johon tapahtumat tallennetaan.
-        """
-        self._file_path = file_path
-
     def find_all(self):
         """
         Palauttaa kaikki tapahtumat
@@ -34,7 +25,7 @@ class EventRepository(CSVBaseRepository):
     def _read(self):
         events = []
         self._ensure_file_exists()
-        
+
         rows = self._read_csv_file()
 
         for parts in rows:
