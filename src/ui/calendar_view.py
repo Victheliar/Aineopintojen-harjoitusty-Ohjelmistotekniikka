@@ -57,7 +57,7 @@ class CalendarItemView:
 
     def _get_events_for_date(self, date):
         event_service._user = self._user
-        events = event_service.get_events_by_date(date, self._user.username)
+        events = event_service._event_repo.find_by_username(self._user.username)
         return [event.content for event in events if getattr(event, "date", "") == date]
 
     def _click_date(self, day, month, year):
