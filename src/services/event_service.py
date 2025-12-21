@@ -24,7 +24,7 @@ class EventService:
         self._event_repo = event_repo
         self._user_repo = user_repo
         self._calendar_repo = calendar_repo
-    
+
     def set_current_user(self, user):
         self._user = user
 
