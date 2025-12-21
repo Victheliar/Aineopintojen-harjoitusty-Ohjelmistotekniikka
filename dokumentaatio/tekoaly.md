@@ -1,0 +1,3 @@
+# Tekoälyn käyttö harjoitustyössä
+
+Harjoitustyön tekemisessä on hyödynnetty tekoälyä neuvojen ja esimerkkien pyytämiseen, sekä paikoin virheilmoitusten selittämiseen. Neuvoja ja esimerkkejä on tarvittu lähinnä kalenterinäkymään ja tapahtumien lisäämiseen liittyvissä ominaisuuksissa. Generoitua koodia ei kuitenkaan hyödynnetty ohjelmassa missään sellaisenaan/pienin muutoksin, vain käytetty lähinnä havainnollistamiseen. 
