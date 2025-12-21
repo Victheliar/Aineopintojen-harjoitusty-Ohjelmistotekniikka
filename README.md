@@ -14,6 +14,8 @@ Sovelluksen avulla on mahdollista seurata omaa henkilökohtaista kalenteria sek�
 
 [Tekoälyn käytöstä](/dokumentaatio/tekoaly.md)
 
+[Testausdokumentti](/dokumentaatio/testaus.md)
+
 ## Asennus
 1. Asenna riippuvuudet:
 ```bash
