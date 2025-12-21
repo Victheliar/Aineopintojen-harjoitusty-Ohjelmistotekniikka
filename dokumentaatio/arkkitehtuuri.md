@@ -10,7 +10,7 @@ Käyttölittymä sisältää kolme erillistä näkymää:
 * Kirjautuminen
 * Kalenterinäkymä
 
-Jokainen näkymä on toteutettu omaan luokkaan. Yksi näkymistä on aina kerrallaan näkyvänä. Näkymien näyttämisestä, vaihtamisesta ja poistamisesta vastaa [UI](../src/ui/ui.py)-luokka. Käyttöliittymä on pyritty eristämään sovelluslogiikasta mahdollisimman paljon.
+Jokainen näkymä on toteutettu omaan luokkaan. Yksi näkymistä on aina kerrallaan näkyvänä. Tapahtumien lisäämisen yhteydessä avautuu oma erillinen näkymä kalenterin päänäkymän viereen. Näkymien näyttämisestä, vaihtamisesta ja poistamisesta vastaa [UI](../src/ui/ui.py)-luokka. Käyttöliittymä on pyritty eristämään sovelluslogiikasta mahdollisimman paljon. Metodia [initialize_calendar] kutsutaan renderöimään kalenterinäkymää uudelleen silloin, kun kalenteriin on tullut jokin muutos.
 
 ## Sovelluslogiikka
 
@@ -90,7 +90,7 @@ Tapahtumakäsittelijä kutsuu create_user-metodia, jonka parametreiksi annetaan 
 ### Sisäänkirjautuminen
 Käyttäjä voi kirjautua sovellukseen sisään syöttämällä kirjautumisnäkymän syötekenttiin käyttäjätunnuksensa ja salasanansa. Tämän jälkeen painamalla painiketta _Login_, etenee sovellus seuraavasti:
 ```mermaid
-SequenceDiagram
+sequenceDiagram
     actor User
     participant UI
     participant CalendarService
@@ -103,3 +103,25 @@ SequenceDiagram
     UI->UI: show_calendar_view()
 ```
 Eli ```CalendarService```:n metodia login kutsutaan antaen sille parametriksi käyttäjätunnuksen ja salasanan. Tämän jälkeen sovelluslogiikka selvittää ```UserRepository```:n avulla, onko käyttäjätunnus olemassa ja täsmäävätkö salasanat. Jos molemmat asiat pitävät paikkaansa, sisäänkirjautuminen onnistuu, minkä seurauksena käyttöliittymän näkymäksi tulee ```CalendarView```, eli sovelluksen päänäkymä. Näkymälle renderöidään myös kirjautuneen käyttäjän kalenteriin lisätyt tapahtumat.
+
+### Tapahtuman lisääminen kalenteriin
+Kun tapahtuma lisätään kalenteriin painamalla "Create"-painiketta, etenee sovellus seuraavasti:
+```mermaid
+sequenceDiagram
+    actor User
+    participant UI
+    participant EventService
+    participant EventRepository
+    participant event
+    User->>UI: click "Create" button
+    UI->>EventService: create_event("ot-harjoitustyön palautus", "2025-12-21")
+    EventService->>event: Event("ot-harjoitustyön palautus", "2025-12-21", "vici", "1f3e111a-b2cb-4b86-9787-c1ab1ced4cde")
+    EventService ->>EventRepository: create(event)
+    EventRepository-->>EventService: event
+    EventService-->>UI: event
+    UI->>UI: initialize_calendar()
+```
+Tapahtumista vastaava sovelluslogiikka siis kutsuu metodia ```create_event``` parametreinaan tapahtuman tiedot. Tämän jälkeen sovelluslogiikka luo ```Event```-olion, joka tallennetaan ```EventRepository```:n metodilla ```create```. Tämän jälkeen käyttöliittymä päivittyy kutsumalla metodia ```initialize_calendar```, jolloin uusi tapahtuma tulee käyttäjän näkyviin.
+
+## Ohjelman rakenteen heikkoudet
+Ohjelman merkillisimpänä heikkoutena on paikoin käyttöliittymän koodin sekavuus sekä toisteisuus sovelluslogiikasta ja tallentamisesta vastaavassa koodissa. Jatkokehitysideanan olisi myös hyvä harkita kaiken datan tallentamisen siirtämistä SQLite-tauluihin CSV-tiedostojen sijaan.
