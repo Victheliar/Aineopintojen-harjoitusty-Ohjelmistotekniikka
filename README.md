@@ -4,7 +4,7 @@ Sovelluksen avulla on mahdollista seurata omaa henkilökohtaista kalenteria sek�
 
 [Käyttöohje](/dokumentaatio/kayttoohje.md)
 
-[Harjoitustyön vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](/dokumentaatio/tuntikirjanpito.md)
 
