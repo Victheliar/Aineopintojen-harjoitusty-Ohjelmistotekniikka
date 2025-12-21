@@ -54,6 +54,9 @@ class CalendarService:
 
     def get_current_user(self):
         return self._user
+    
+    def get_users(self):
+        return self._user_repo.find_all()
 
     def create_calendar(self):
         existing_calendar = self._calendar_repo.find_by_username(

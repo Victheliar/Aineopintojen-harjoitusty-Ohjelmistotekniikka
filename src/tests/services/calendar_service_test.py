@@ -61,23 +61,32 @@ class FakeCalendarRepo:
     def find_by_username(self, username):
         user_cals = filter(
             lambda cal: cal.user and cal.user.username == username, self.calendars)
-        return list(user_cals)
+        matching_cals_list = list(user_cals)
+        return matching_cals_list[0] if len(matching_cals_list)>0 else None
 
     def create(self, calendar):
         self.calendars.append(calendar)
         return calendar
 
 
-class TestEventServise(unittest.TestCase):
+class TestCalendarServise(unittest.TestCase):
     def setUp(self):
-        self.event_service = EventService(FakeEventRepo, FakeUserRepo)
-        self.calendar_service = CalendarService(FakeUserRepo, FakeCalendarRepo)
-        self.event_a = Event("testing a", "2025-12-09")
-        self.event_b = Event("testing b", "2025-12-08")
+        self.event_service = EventService(FakeEventRepo(), FakeUserRepo())
+        self.calendar_service = CalendarService(FakeUserRepo(), FakeCalendarRepo())
+        self.event_a = Event(content="testing a", date="2025-12-09")
+        self.event_b = Event(content="testing b", date="2025-12-08")
         self.user_vici = User("vici", "testi123")
 
     def login_user(self, user):
         self.calendar_service.create_user(user.username, user.password)
+    
+    def test_create_calendar(self):
+        self.login_user(self.user_vici)
+        
+        self.calendar_service.create_calendar()
+        calendar = self.calendar_service.get_calendar()
+        self.assertIsNotNone(calendar)
+        self.assertEqual(calendar.user.username, self.user_vici.username)
 
     def test_login_with_valid_username_and_password(self):
         self.calendar_service.create_user(
@@ -89,3 +98,36 @@ class TestEventServise(unittest.TestCase):
             self.user_vici.password
         )
         self.assertEqual(user.username, self.user_vici.username)
+    
+    def test_login_with_invalid_username_and_password(self):
+        self.assertRaises(InvalidCredentialsError, lambda: self.calendar_service.login("testing", "invalid"))
+    
+    def test_get_current_user(self):
+        self.login_user(self.user_vici)
+        current_user = self.calendar_service.get_current_user()
+        self.assertEqual(current_user.username, self.user_vici.username)
+    
+    def test_create_user_with_non_existing_username(self):
+        username = self.user_vici.username
+        password = self.user_vici.password
+        
+        self.calendar_service.create_user(username, password)
+        users = self.calendar_service.get_users()
+        self.assertEqual(len(users), 1)
+        self.assertEqual(users[0].username, username)
+
+    def test_create_user_with_existing_username(self):
+        username = self.user_vici.username
+        self.calendar_service.create_user(username, "something")
+        
+        self.assertRaises(UsernameExistsError, lambda: self.calendar_service.create_user(username, "random"))
+        
+    def test_logout(self):
+        self.login_user(self.user_vici)
+        self.calendar_service.logout()
+        user = self.calendar_service.get_current_user()
+        self.assertIsNone(user)
+    
+    def test_user_not_logged_in(self):
+        calendar = self.calendar_service.get_calendar()
+        self.assertEqual(calendar, [])

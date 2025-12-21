@@ -47,6 +47,9 @@ class CalendarRepository(CSVBaseRepository):
         calendars.append(calendar)
         self._write(calendars)
         return calendar
+    
+    def delete_all(self):
+        self._write([])
 
 
 calendar_repository = CalendarRepository(CALENDAR_FILE_PATH)
