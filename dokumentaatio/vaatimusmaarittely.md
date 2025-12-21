@@ -2,23 +2,23 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla käyttäjien on mahdollsta pysyä ajantasalla tulevista tapahtumista ja tehtävistä. Jokaisella rekisteröityneellä käyttäjällä on oma yksilöllinen kalenterinsa.
+Sovelluksen avulla käyttäjien on mahdollsta pysyä ajantasalla tulevista tapahtumista. Jokaisella rekisteröityneellä käyttäjällä on oma yksilöllinen kalenterinsa, jonne voi lisätä kuukauden tulevat tapahtumat.
 
 ## Sovelluksen tarjoama toiminnallisuus
 
 ### Ennen kirjautumista
 
-- Käyttäjä voi luoda itselleen käyttäjätunnuksen järjestelmään ✅
-    - Käyttäjätunnuksen on oltava uniikki ja pituudeltaan vähintään 3 merkkiä ✅
-- Käyttäjä voi kirjautua järjestelmään syöttämällä käyttäjätunnus ja salasana kirjautumislomakkeelle ✅
-    - Jos käyttäjää ei ole olemassa, tai salasana ei täsmää, järjestelmä ilmoittaa tästä käyttäjälle. ✅
+- Käyttäjä voi luoda itselleen käyttäjätunnuksen järjestelmään
+    - Käyttäjätunnuksen on oltava uniikki ja pituudeltaan vähintään 3 merkkiä
+- Käyttäjä voi kirjautua järjestelmään syöttämällä käyttäjätunnus ja salasana kirjautumislomakkeelle
+    - Jos käyttäjää ei ole olemassa, tai salasana ei täsmää, järjestelmä ilmoittaa tästä käyttäjälle
 
 ### Kirjautumisen jälkeen
 
-- Käyttäjä näkee oman kalenterinsa ✅
-- Käyttäjä voi lisätä kalenteriinsa uuden tapahtuman tai tehtävän ✅
-    - Luotu tapahtuma tai tehtävä näkyy ainoastaan sen luoneelle käyttäjälle ✅
-- Käyttäjä voi kirjautua ulos järjestelmästä.✅
+- Käyttäjä näkee oman kalenterinsa
+- Käyttäjä voi lisätä kalenteriinsa uuden tapahtuman tai tehtävän
+    - Luotu tapahtuma tai tehtävä näkyy ainoastaan sen luoneelle käyttäjälle
+- Käyttäjä voi kirjautua ulos järjestelmästä
 
 ### Jatkokehitysideoita
 
