@@ -1,6 +1,9 @@
 data/database.sqlite
 data/calendar.csv
 data/event.csv
+data/test_calendar.csv
+data/test_database.sqlite
+data/test_event.csv
 __pycache__
 htmlcov
 .coverage

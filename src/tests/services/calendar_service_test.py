@@ -69,7 +69,7 @@ class FakeCalendarRepo:
         return calendar
 
 
-class TestCalendarServise(unittest.TestCase):
+class TestCalendarService(unittest.TestCase):
     def setUp(self):
         self.event_service = EventService(FakeEventRepo(), FakeUserRepo())
         self.calendar_service = CalendarService(FakeUserRepo(), FakeCalendarRepo())
